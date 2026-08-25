@@ -27,6 +27,7 @@
 <p>
   <a href="#overview">Overview</a> &bull;
   <a href="#study-at-a-glance">Study</a> &bull;
+  <a href="#baseline-comparison">Baselines</a> &bull;
   <a href="#method">Method</a> &bull;
   <a href="#quick-start">Quick Start</a> &bull;
   <a href="#basic-operations">Operations</a> &bull;
@@ -129,6 +130,49 @@ predictions using fixed thresholds rather than independent classifiers.
 | Macrosomia | Birth weight at least 4,000 g |
 
 </details>
+
+## Baseline Comparison
+
+<p align="center">
+  <img src="assets/fig2a_baseline_comparison.png" width="92%" alt="Internal and external MAE comparison between FetusGrowth and evaluated baseline models">
+</p>
+
+<p align="center"><sub>
+  <b>Fig. 2a — Continuous-outcome benchmark.</b> Solid bars show the internal test
+  cohort and hatched bars show the external nine-hospital cohort. Lower MAE is better.
+</sub></p>
+
+FetusGrowth was compared with general-purpose and medical foundation models,
+multimodal or vision-language models, leakage-controlled gradient-boosting models,
+and last-menstrual-period rules. The primary paired comparison used the strongest
+eligible baseline for each endpoint, selected by external-cohort MAE.
+
+### Internal test cohort
+
+| Endpoint | Paired *n* | **FetusGrowth MAE** | Strongest baseline | Baseline MAE | **MAE reduction** (95% CI) | *P* |
+|---|---:|---:|---|---:|---:|---:|
+| Delivery timing | 1,339 | **1.95 days** | GPT-5.6 (think) | 6.65 days | **4.70 days** (4.39–5.01) | <0.001 |
+| Birth weight | 1,339 | **156.9 g** | GPT-5.6 (think) | 267.1 g | **110.2 g** (98.4–122.2) | <0.001 |
+| Birth length | 1,339 | **0.49 cm** | GPT-5.6 (no-think) | 0.64 cm | **0.15 cm** (0.11–0.19) | <0.001 |
+
+### External nine-hospital cohort
+
+| Endpoint | Paired *n* | **FetusGrowth MAE** | Strongest baseline | Baseline MAE | **MAE reduction** (95% CI) | *P* |
+|---|---:|---:|---|---:|---:|---:|
+| Delivery timing | 3,595 | **3.29 days** | GPT-5.6 (think) | 6.35 days | **3.06 days** (2.82–3.31) | <0.001 |
+| Birth weight | 3,569 | **153.1 g** | GPT-5.6 (think) | 251.2 g | **98.1 g** (91.1–105.0) | <0.001 |
+| Birth length | 2,759 | **0.76 cm** | GPT-5.6 (no-think) | 0.93 cm | **0.17 cm** (0.14–0.20) | <0.001 |
+
+> [!TIP]
+> **MAE reduction = baseline MAE − FetusGrowth MAE**, so larger positive values
+> favour FetusGrowth. Confidence intervals are patient-level percentile-bootstrap
+> intervals, and *P* values are from two-sided paired randomization tests.
+
+> [!NOTE]
+> Because the strongest comparator for each endpoint was selected using its observed
+> external MAE, these paired contrasts are descriptive rather than prospectively
+> confirmatory. All models were evaluated on the same eligible pregnancies and at the
+> same prediction cutoff; endpoint-specific coverage is reported in the manuscript.
 
 ## Method
 
