@@ -1,0 +1,37 @@
+# Clinical data and generated datasets
+/data/
+/benchmarks/
+*.jsonl
+*.jsonl.*
+
+# Model artifacts
+/outputs/
+/checkpoints/
+/weights/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+
+# Evaluation predictions and local reports
+/evaluation/
+/logs/
+/runs/
+/wandb/
+
+# Python and notebooks
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+*.swp

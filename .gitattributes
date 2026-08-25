@@ -1,0 +1,3 @@
+*.png binary
+*.pdf binary
+*.jsonl linguist-generated=true
